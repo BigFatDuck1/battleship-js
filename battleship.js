@@ -15,6 +15,10 @@ class Ship {
         }
     }
 
+    showHealth() {
+        return this.length - this.hits;
+    }
+
 }
 
 class Gameboard {
@@ -31,3 +35,5 @@ class Player {
     //there should be a computer player and human player
     //each player should have their own gameboard
 }
+
+module.exports = { Ship, Gameboard, Player};
