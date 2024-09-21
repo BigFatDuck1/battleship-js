@@ -16,3 +16,18 @@ class Ship {
     }
 
 }
+
+class Gameboard {
+
+    receiveAttack(x,y) {
+        //Takes coordinates, determines whether attack hit any ship
+        //calls Ship.hit() to appropriate ship
+        //records coordinate of the hit
+    }
+
+}
+
+class Player {
+    //there should be a computer player and human player
+    //each player should have their own gameboard
+}
