@@ -22,6 +22,9 @@ class Ship {
 }
 
 class Gameboard {
+    constructor(dimensions) {
+        this.dimensions = dimensions;
+    }
 
     receiveAttack(x,y) {
         //Takes coordinates, determines whether attack hit any ship
