@@ -1,8 +1,13 @@
+
+
 class Ship {
-    constructor(length) {
+    constructor(length, start, orientation) { //start in the form of coordinates [x,y]
         this.length = length;
         this.hits = 0;
         this.sunk = false;
+        this.start = start; //[x,y]
+        this.orientation = orientation; //horizontal or vertical
+        this.coordinates = [];
     }
 
     hit() {
@@ -19,11 +24,46 @@ class Ship {
         return this.length - this.hits;
     }
 
+    setCoordinates(){
+        if (this.orientation == "vertical") {
+            for (let i = 0; i < this.length; i++) {
+                this.coordinates.push([start[0], start[1] + i]);
+            }
+        }
+        else if (this.orientation == "horizontal") {
+            for (let i = 0; i < this.length; i++) {
+                this.coordinates.push([start[0] + i, start[1]]);
+            }
+        }
+
+        return this.coordinates;
+    }
+
+    toggleRotation() {
+        if (this.orientation == "vertical") {
+            this.orientation = "horizontal";
+        }
+        else if (this.orientation == "horizontal") {
+            this.orientation = "vertical";
+        }
+    }
+
+
+
 }
 
 class Gameboard {
     constructor(dimensions) {
         this.dimensions = dimensions;
+        this.ship_dict = [];
+    }
+
+    newShip(x,y,length, orientation) { //Ship(length, start, orientation)
+        let start_coordinates = [x,y];
+        let new_ship = new Ship(length, start_coordinates, orientation);
+        this.ship_dict.push(new_ship);
+
+        return new_ship;
     }
 
     receiveAttack(x,y) {
