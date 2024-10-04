@@ -55,12 +55,19 @@ class Ship {
 class Gameboard {
     constructor(dimensions) {
         this.dimensions = dimensions;
+        this.board = [];
+        for (let i = 0; i < dimensions; i++) {
+            for (let j = 0; j < dimensions; j++) {
+                this.board.push([i,j]);
+            }
+        }
         this.ship_dict = [];
     }
 
     newShip(x,y,length, orientation) { //Ship(length, start, orientation)
         let start_coordinates = [x,y];
         let new_ship = new Ship(length, start_coordinates, orientation);
+        new_ship.setCoordinates();
         this.ship_dict.push(new_ship);
 
         return new_ship;
